@@ -1,9 +1,9 @@
 # webapp_multiccy_acctmgmt
-grails4+webix webapp for multiccy account mgmt + fx Value-at-Risk
+grails+webix webapp for multiccy account mgmt + fx Value-at-Risk
 
 tech-stack:
 * webix.js
-* grails 4 + groovy
+* grails 4 + groovy JVM
 * neo4j
 
 online demo:
