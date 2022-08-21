@@ -1,0 +1,55 @@
+version: "3.3"
+# A network called g4hab_default (bridge) is created.       ... https://docs.docker.com/compose/networking/
+# A container is created using mongo’s configuration. It joins the network g4hab_default under the name web.
+# A container is created using grails’s configuration. It joins the network g4hab_default under the name db.
+# Each container can now look up the hostname web or db and get back the appropriate container’s IP address.
+# For example, web’s application code could connect to the URL postgres://db:5432 and start using the Postgres database.
+services:
+  neo:
+    # https://hub.docker.com/_/neo4j
+    container_name: neo_mcaa
+    restart: always
+    build: .
+    #ports:
+    # - "7474:7474"
+    # - "7687:7687"
+    # expose is not ok because you will have to change on first login
+    expose:
+    - "7474"
+    - "7687"        # "7473,7474 http,7687 bolt"
+    image: "neo4j:4.2.1"
+    volumes:
+    - "/home/ec2-user/vol/neo_mc:/data"
+    # /home/ec2-user/vol/neo_mc  is created  automatically
+    
+# https://medium.com/@thibaut.deveraux/how-to-install-neo4j-with-docker-compose-36e3ba939af0    
+# volumes:
+      # - ./conf:/conf
+      # - ./data:/data
+      # - ./import:/import
+      # - ./logs:/logs
+      # - ./plugins:/plugins
+      
+    
+    environment:
+      #NEO4J_AUTH: none
+      NEO4J_AUTH: neo4j/$neo4jpwd
+      #Using NEO4J_AUTH to set an initial password
+      # https://neo4j.com/docs/operations-manual/current/docker/introduction/
+      # otherwise, neo4j/neo4j
+  grails:
+    container_name: grails_mcaa
+    build: .
+    ports:
+    - "80:8080"
+    depends_on:
+    - neo
+    #... depends_on is about start sequence, not network layers
+    image: "registry.alberto-moscatelli.name/g4mcaa:latest"
+    environment:
+        GRAPHENEDB_BOLT_URL: bolt://neo:7687
+        GRAPHENEDB_BOLT_USER: neo4j
+        GRAPHENEDB_BOLT_PASSWORD: $neo4jpwd
+        #GRAPHENEDB_URL: http://neo4j:neo4j201220@neo:7474/
+        
+  
