@@ -1,7 +1,6 @@
-# webapp_multiccy_acctmgmt
-grails+webix webapp for multiccy account mgmt + fx Value-at-Risk
+# webapp: personal multicurrency accounts manager + FX Value-at-Risk
 
-tech-stack:
+docker-based tech-stack:
 * webix.js
 * grails 4 + groovy JVM
 * neo4j
