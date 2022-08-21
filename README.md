@@ -1,4 +1,5 @@
-# webapp: personal multicurrency accounts manager + FX Value-at-Risk
+# webapp: personal multicurrency accounts manager
+## + FX Value-at-Risk
 
 docker-based tech-stack:
 * webix.js
