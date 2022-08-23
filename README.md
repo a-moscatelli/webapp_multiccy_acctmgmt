@@ -6,7 +6,7 @@ tech-stack:
 * grails 4 + groovy JVM
 * neo4j
 
-docker
+{docker}
 
 online demo:
 http://multicur.alberto-moscatelli.name/member/index
