@@ -1,0 +1,4 @@
+web: java -Dgrails.env=prod -Dserver.port=$PORT $JAVA_OPTS -jar build/libs/g4mcaa-0.1.war
+# JAVA_OPTS should be -Xmx384m -Xss512k -XX:+UseCompressedOops
+# -Xmx256m
+
