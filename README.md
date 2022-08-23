@@ -1,5 +1,5 @@
 # webapp: personal multicurrency accounts manager
-## + FX Value-at-Risk
+### data entry + reporting + FX Value-at-Risk
 
 tech-stack:
 * webix.js
